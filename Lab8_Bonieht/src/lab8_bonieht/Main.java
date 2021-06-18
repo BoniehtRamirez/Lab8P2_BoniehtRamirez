@@ -67,6 +67,15 @@ public class Main extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         tf_marcaFiltro = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        tf_vinFiltro = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jt_FiltroGeneral = new javax.swing.JTable();
+        cb_Atributo = new javax.swing.JComboBox<>();
+        tf_filtro = new javax.swing.JTextField();
+        jButton9 = new javax.swing.JButton();
 
         jLabel1.setText("VIN:");
 
@@ -277,7 +286,7 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addContainerGap(108, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("CRUD", jPanel1);
@@ -338,7 +347,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jLabel13)
                     .addComponent(cb_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("FiltroCategoría", jPanel2);
@@ -363,12 +372,21 @@ public class Main extends javax.swing.JFrame {
 
         jLabel14.setText("Marca:");
 
-        jButton6.setText("Buscar");
+        jButton6.setText("Buscar Marca");
         jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton6MouseClicked(evt);
             }
         });
+
+        jButton8.setText("Buscar VIN");
+        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton8MouseClicked(evt);
+            }
+        });
+
+        jLabel15.setText("VIN:");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -379,12 +397,18 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(72, 72, 72)
-                .addComponent(jLabel14)
+                .addGap(63, 63, 63)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel15))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tf_marcaFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64)
-                .addComponent(jButton6)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tf_vinFiltro, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                    .addComponent(tf_marcaFiltro))
+                .addGap(39, 39, 39)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -397,10 +421,74 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jLabel14)
                     .addComponent(tf_marcaFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton6))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton8)
+                    .addComponent(tf_vinFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("FiltroMarca", jPanel3);
+        jTabbedPane1.addTab("FiltroMarca/VIN", jPanel3);
+
+        jt_FiltroGeneral.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "VIN", "Marca", "Carroceria", "Puertas", "Color", "Motor", "Hibridacion", "Pasajeros", "Ensamblaje", "Precio"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, true, true, true, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(jt_FiltroGeneral);
+
+        cb_Atributo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Carroceria", "Puertas", "Color", "Motor", "Hibridacion", "Pasajeros", "Ensamblaje", "Precio", " " }));
+
+        jButton9.setText("Buscar");
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton9MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(cb_Atributo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(tf_filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton9)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cb_Atributo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_filtro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton9))
+                .addContainerGap(46, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Filtro General", jPanel4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -410,7 +498,9 @@ public class Main extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -530,10 +620,52 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5MouseClicked
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
-        TableRowSorter filtro = new TableRowSorter(jt_FiltroCategoria.getModel());
+        TableRowSorter filtro = new TableRowSorter(jt_FiltroMarca.getModel());
         filtro.setRowFilter(RowFilter.regexFilter(tf_marcaFiltro.getText(), 1));
         jt_FiltroMarca.setRowSorter(filtro);
     }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
+        TableRowSorter filtro = new TableRowSorter(jt_FiltroMarca.getModel());
+        filtro.setRowFilter(RowFilter.regexFilter(tf_vinFiltro.getText(), 0));
+        jt_FiltroMarca.setRowSorter(filtro);
+    }//GEN-LAST:event_jButton8MouseClicked
+
+    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
+        if(cb_Atributo.getSelectedIndex()==0){
+            TableRowSorter filtro = new TableRowSorter(jt_FiltroGeneral.getModel());
+            filtro.setRowFilter(RowFilter.regexFilter(tf_filtro.getText(), 2));
+            jt_FiltroGeneral.setRowSorter(filtro);
+        } else if(cb_Atributo.getSelectedIndex()==1){
+            TableRowSorter filtro = new TableRowSorter(jt_FiltroGeneral.getModel());
+            filtro.setRowFilter(RowFilter.regexFilter(tf_filtro.getText(), 3));
+            jt_FiltroGeneral.setRowSorter(filtro);
+        } else if(cb_Atributo.getSelectedIndex()==2){
+            TableRowSorter filtro = new TableRowSorter(jt_FiltroGeneral.getModel());
+            filtro.setRowFilter(RowFilter.regexFilter(tf_filtro.getText(), 4));
+            jt_FiltroGeneral.setRowSorter(filtro);
+        } else if(cb_Atributo.getSelectedIndex()==3){
+            TableRowSorter filtro = new TableRowSorter(jt_FiltroGeneral.getModel());
+            filtro.setRowFilter(RowFilter.regexFilter(tf_filtro.getText(), 5));
+            jt_FiltroGeneral.setRowSorter(filtro);
+        } else if(cb_Atributo.getSelectedIndex()==4){
+            TableRowSorter filtro = new TableRowSorter(jt_FiltroGeneral.getModel());
+            filtro.setRowFilter(RowFilter.regexFilter(tf_filtro.getText(), 6));
+            jt_FiltroGeneral.setRowSorter(filtro);
+        } else if(cb_Atributo.getSelectedIndex()==5){
+            TableRowSorter filtro = new TableRowSorter(jt_FiltroGeneral.getModel());
+            filtro.setRowFilter(RowFilter.regexFilter(tf_filtro.getText(), 7));
+            jt_FiltroGeneral.setRowSorter(filtro);
+        } else if(cb_Atributo.getSelectedIndex()==6){
+            TableRowSorter filtro = new TableRowSorter(jt_FiltroGeneral.getModel());
+            filtro.setRowFilter(RowFilter.regexFilter(tf_filtro.getText(), 8));
+            jt_FiltroGeneral.setRowSorter(filtro);
+        } else if(cb_Atributo.getSelectedIndex()==7){
+            TableRowSorter filtro = new TableRowSorter(jt_FiltroGeneral.getModel());
+            filtro.setRowFilter(RowFilter.regexFilter(tf_filtro.getText(), 9));
+            jt_FiltroGeneral.setRowSorter(filtro);
+        }
+    }//GEN-LAST:event_jButton9MouseClicked
 
     /**
      * @param args the command line arguments
@@ -571,6 +703,7 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cb_Atributo;
     private javax.swing.JComboBox<String> cb_carroceria;
     private javax.swing.JComboBox<String> cb_categoria;
     private javax.swing.JComboBox<String> cb_hibridacion;
@@ -582,12 +715,15 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -599,12 +735,15 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JDialog jd_Crear;
     private javax.swing.JTable jt_FiltroCategoria;
+    private javax.swing.JTable jt_FiltroGeneral;
     private javax.swing.JTable jt_FiltroMarca;
     private javax.swing.JTable jt_Vehiculos;
     private javax.swing.JSpinner sp_ensamblaje;
@@ -612,9 +751,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JSpinner sp_precio;
     private javax.swing.JSpinner sp_puertas;
     private javax.swing.JTextField tf_color;
+    private javax.swing.JTextField tf_filtro;
     private javax.swing.JTextField tf_marca;
     private javax.swing.JTextField tf_marcaFiltro;
     private javax.swing.JTextField tf_vin;
+    private javax.swing.JTextField tf_vinFiltro;
     // End of variables declaration//GEN-END:variables
     ArrayList<Vehiculo> vehiculos = new ArrayList();
     
@@ -633,6 +774,7 @@ public class Main extends javax.swing.JFrame {
         jt_Vehiculos.setModel(model);
         jt_FiltroCategoria.setModel(model);
         jt_FiltroMarca.setModel(model);
+        jt_FiltroGeneral.setModel(model);
     }
     
     public boolean validarVIN(long vin){
