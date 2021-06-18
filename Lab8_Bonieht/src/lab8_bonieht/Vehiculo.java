@@ -2,17 +2,17 @@ package lab8_bonieht;
 
 public class Vehiculo {
     private long VIN;
-    private String marca, carroceria, color, tipoMotor, tipoHidratacion;
+    private String marca, carroceria, color, tipoMotor, tipoHibridacion;
     private int numeroPuertas, cantPasajeros, tiempoEnsamblaje;
     private double precio;
 
-    public Vehiculo(long VIN, String marca, String carroceria, String color, String tipoMotor, String tipoHidratacion, int numeroPuertas, int cantPasajeros, int tiempoEnsamblaje, double precio) {
+    public Vehiculo(long VIN, String marca, String carroceria, String color, String tipoMotor, String tipoHibridacion, int numeroPuertas, int cantPasajeros, int tiempoEnsamblaje, double precio) {
         this.VIN = VIN;
         this.marca = marca;
         this.carroceria = carroceria;
         this.color = color;
         this.tipoMotor = tipoMotor;
-        this.tipoHidratacion = tipoHidratacion;
+        this.tipoHibridacion = tipoHibridacion;
         this.numeroPuertas = numeroPuertas;
         this.cantPasajeros = cantPasajeros;
         this.tiempoEnsamblaje = tiempoEnsamblaje;
@@ -59,12 +59,12 @@ public class Vehiculo {
         this.tipoMotor = tipoMotor;
     }
 
-    public String getTipoHidratacion() {
-        return tipoHidratacion;
+    public String getTipoHibridacion() {
+        return tipoHibridacion;
     }
 
-    public void setTipoHidratacion(String tipoHidratacion) {
-        this.tipoHidratacion = tipoHidratacion;
+    public void setTipoHibridacion(String tipoHidridacion) {
+        this.tipoHibridacion = tipoHidridacion;
     }
 
     public int getNumeroPuertas() {
@@ -98,6 +98,5 @@ public class Vehiculo {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
-    
     
 }
