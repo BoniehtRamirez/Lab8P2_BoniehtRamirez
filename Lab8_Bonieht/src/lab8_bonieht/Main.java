@@ -1,8 +1,12 @@
 package lab8_bonieht;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 public class Main extends javax.swing.JFrame {
 
@@ -52,6 +56,11 @@ public class Main extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jt_Vehiculos = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jt_Filtros = new javax.swing.JTable();
+        jLabel13 = new javax.swing.JLabel();
+        cb_categoria = new javax.swing.JComboBox<>();
+        jButton5 = new javax.swing.JButton();
 
         jLabel1.setText("VIN:");
 
@@ -257,23 +266,70 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("CRUD", jPanel1);
+
+        jt_Filtros.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "VIN", "Marca", "Carroceria", "Puertas", "Color", "Motor", "Hibridacion", "Pasajeros", "Ensamblaje", "Precio"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, true, true, true, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jt_Filtros);
+
+        jLabel13.setText("Categoría:");
+
+        cb_categoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Generalista", "Premium", "Deportivo" }));
+
+        jButton5.setText("Filtrar");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 591, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cb_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(81, 81, 81)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 357, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(cb_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton5))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("tab2", jPanel2);
+        jTabbedPane1.addTab("FiltroCategoría", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -369,6 +425,33 @@ public class Main extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Modificaciones hechas!");
     }//GEN-LAST:event_jButton2MouseClicked
 
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        if(cb_categoria.getSelectedIndex()==0){
+            TableRowSorter filtro = new TableRowSorter(jt_Filtros.getModel());
+            List<RowFilter<Object,Object>> filters = new ArrayList<>(2);
+            filters.add(RowFilter.regexFilter("SEAT", 1));
+            filters.add(RowFilter.regexFilter("Skoda", 1));
+            filtro.setRowFilter(RowFilter.orFilter(filters));           
+            jt_Filtros.setRowSorter(filtro);
+        } else if(cb_categoria.getSelectedIndex()==1){
+            TableRowSorter filtro = new TableRowSorter(jt_Filtros.getModel());
+            List<RowFilter<Object,Object>> filters = new ArrayList<>(2);
+            filters.add(RowFilter.regexFilter("Audi", 1));
+            filters.add(RowFilter.regexFilter("Volkswagen", 1));
+            filters.add(RowFilter.regexFilter("Bentley", 1));
+            filtro.setRowFilter(RowFilter.orFilter(filters));           
+            jt_Filtros.setRowSorter(filtro);
+        } else {
+            TableRowSorter filtro = new TableRowSorter(jt_Filtros.getModel());
+            List<RowFilter<Object,Object>> filters = new ArrayList<>(2);
+            filters.add(RowFilter.regexFilter("Porsche", 1));
+            filters.add(RowFilter.regexFilter("Lamborghini", 1));
+            filters.add(RowFilter.regexFilter("Bugatti", 1));
+            filtro.setRowFilter(RowFilter.orFilter(filters));
+            jt_Filtros.setRowSorter(filtro);
+        }
+    }//GEN-LAST:event_jButton5MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -406,16 +489,19 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cb_carroceria;
+    private javax.swing.JComboBox<String> cb_categoria;
     private javax.swing.JComboBox<String> cb_hibridacion;
     private javax.swing.JComboBox<String> cb_motor;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -427,8 +513,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JDialog jd_Crear;
+    private javax.swing.JTable jt_Filtros;
     private javax.swing.JTable jt_Vehiculos;
     private javax.swing.JSpinner sp_ensamblaje;
     private javax.swing.JSpinner sp_pasajeros;
@@ -453,5 +541,6 @@ public class Main extends javax.swing.JFrame {
         }
         
         jt_Vehiculos.setModel(model);
+        jt_Filtros.setModel(model);
     }
 }
