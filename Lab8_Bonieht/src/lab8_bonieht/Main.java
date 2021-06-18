@@ -1,7 +1,6 @@
 package lab8_bonieht;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
@@ -55,12 +54,19 @@ public class Main extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jt_Vehiculos = new javax.swing.JTable();
+        jButton7 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jt_Filtros = new javax.swing.JTable();
+        jt_FiltroCategoria = new javax.swing.JTable();
         jLabel13 = new javax.swing.JLabel();
         cb_categoria = new javax.swing.JComboBox<>();
         jButton5 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jt_FiltroMarca = new javax.swing.JTable();
+        jLabel14 = new javax.swing.JLabel();
+        tf_marcaFiltro = new javax.swing.JTextField();
+        jButton6 = new javax.swing.JButton();
 
         jLabel1.setText("VIN:");
 
@@ -238,19 +244,22 @@ public class Main extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jt_Vehiculos);
 
+        jButton7.setText("Guardar Access");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(49, 49, 49))
+                .addGap(25, 25, 25))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,7 +271,9 @@ public class Main extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButton2)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3))
+                        .addComponent(jButton3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton7))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -271,7 +282,7 @@ public class Main extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("CRUD", jPanel1);
 
-        jt_Filtros.setModel(new javax.swing.table.DefaultTableModel(
+        jt_FiltroCategoria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -287,7 +298,7 @@ public class Main extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jt_Filtros);
+        jScrollPane2.setViewportView(jt_FiltroCategoria);
 
         jLabel13.setText("Categoría:");
 
@@ -306,15 +317,16 @@ public class Main extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(74, 74, 74)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cb_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(81, 81, 81)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cb_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(81, 81, 81)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(146, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -330,6 +342,65 @@ public class Main extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("FiltroCategoría", jPanel2);
+
+        jt_FiltroMarca.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "VIN", "Marca", "Carroceria", "Puertas", "Color", "Motor", "Hibridacion", "Pasajeros", "Ensamblaje", "Precio"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, true, true, true, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(jt_FiltroMarca);
+
+        jLabel14.setText("Marca:");
+
+        jButton6.setText("Buscar");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(72, 72, 72)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tf_marcaFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64)
+                .addComponent(jButton6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(tf_marcaFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton6))
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("FiltroMarca", jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -427,30 +498,36 @@ public class Main extends javax.swing.JFrame {
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
         if(cb_categoria.getSelectedIndex()==0){
-            TableRowSorter filtro = new TableRowSorter(jt_Filtros.getModel());
+            TableRowSorter filtro = new TableRowSorter(jt_FiltroCategoria.getModel());
             List<RowFilter<Object,Object>> filters = new ArrayList<>(2);
             filters.add(RowFilter.regexFilter("SEAT", 1));
             filters.add(RowFilter.regexFilter("Skoda", 1));
             filtro.setRowFilter(RowFilter.orFilter(filters));           
-            jt_Filtros.setRowSorter(filtro);
+            jt_FiltroCategoria.setRowSorter(filtro);
         } else if(cb_categoria.getSelectedIndex()==1){
-            TableRowSorter filtro = new TableRowSorter(jt_Filtros.getModel());
+            TableRowSorter filtro = new TableRowSorter(jt_FiltroCategoria.getModel());
             List<RowFilter<Object,Object>> filters = new ArrayList<>(2);
             filters.add(RowFilter.regexFilter("Audi", 1));
             filters.add(RowFilter.regexFilter("Volkswagen", 1));
             filters.add(RowFilter.regexFilter("Bentley", 1));
             filtro.setRowFilter(RowFilter.orFilter(filters));           
-            jt_Filtros.setRowSorter(filtro);
+            jt_FiltroCategoria.setRowSorter(filtro);
         } else {
-            TableRowSorter filtro = new TableRowSorter(jt_Filtros.getModel());
+            TableRowSorter filtro = new TableRowSorter(jt_FiltroCategoria.getModel());
             List<RowFilter<Object,Object>> filters = new ArrayList<>(2);
             filters.add(RowFilter.regexFilter("Porsche", 1));
             filters.add(RowFilter.regexFilter("Lamborghini", 1));
             filters.add(RowFilter.regexFilter("Bugatti", 1));
             filtro.setRowFilter(RowFilter.orFilter(filters));
-            jt_Filtros.setRowSorter(filtro);
+            jt_FiltroCategoria.setRowSorter(filtro);
         }
     }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        TableRowSorter filtro = new TableRowSorter(jt_FiltroCategoria.getModel());
+        filtro.setRowFilter(RowFilter.regexFilter(tf_marcaFiltro.getText(), 1));
+        jt_FiltroMarca.setRowSorter(filtro);
+    }//GEN-LAST:event_jButton6MouseClicked
 
     /**
      * @param args the command line arguments
@@ -497,11 +574,14 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -512,11 +592,14 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JDialog jd_Crear;
-    private javax.swing.JTable jt_Filtros;
+    private javax.swing.JTable jt_FiltroCategoria;
+    private javax.swing.JTable jt_FiltroMarca;
     private javax.swing.JTable jt_Vehiculos;
     private javax.swing.JSpinner sp_ensamblaje;
     private javax.swing.JSpinner sp_pasajeros;
@@ -524,6 +607,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JSpinner sp_puertas;
     private javax.swing.JTextField tf_color;
     private javax.swing.JTextField tf_marca;
+    private javax.swing.JTextField tf_marcaFiltro;
     private javax.swing.JTextField tf_vin;
     // End of variables declaration//GEN-END:variables
     ArrayList<Vehiculo> vehiculos = new ArrayList();
@@ -541,6 +625,7 @@ public class Main extends javax.swing.JFrame {
         }
         
         jt_Vehiculos.setModel(model);
-        jt_Filtros.setModel(model);
+        jt_FiltroCategoria.setModel(model);
+        jt_FiltroMarca.setModel(model);
     }
 }
