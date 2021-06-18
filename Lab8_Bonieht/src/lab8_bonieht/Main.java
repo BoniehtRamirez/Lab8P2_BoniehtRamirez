@@ -433,23 +433,29 @@ public class Main extends javax.swing.JFrame {
         tiempoEnsamblaje = (int) sp_ensamblaje.getValue();
         precio = (double) sp_precio.getValue();
         
-        vehiculos.add(new Vehiculo (VIN,marca,carroceria,color,tipoMotor,tipoHibridacion,numeroPuertas,cantPasajeros,tiempoEnsamblaje,precio));
-        JOptionPane.showMessageDialog(jd_Crear, "Vehiculo creado!");
+        if(validarVIN(VIN)){
+            JOptionPane.showMessageDialog(jd_Crear, "VIN ya existente!");
+        } else {
+            vehiculos.add(new Vehiculo (VIN,marca,carroceria,color,tipoMotor,tipoHibridacion,numeroPuertas,cantPasajeros,tiempoEnsamblaje,precio));
+            JOptionPane.showMessageDialog(jd_Crear, "Vehiculo creado!");
+
+            actualizarTablaCRUD();
+
+            jd_Crear.setVisible(false);
+
+            tf_vin.setText("");
+            tf_marca.setText("");
+            cb_carroceria.setSelectedIndex(0);
+            tf_color.setText("");
+            cb_motor.setSelectedIndex(0);
+            cb_hibridacion.setSelectedIndex(0);
+            sp_puertas.setValue(2);
+            sp_pasajeros.setValue(2);
+            sp_ensamblaje.setValue(0);
+            sp_precio.setValue((double)0);
+        }
         
-        actualizarTablaCRUD();
-        
-        jd_Crear.setVisible(false);
-        
-        tf_vin.setText("");
-        tf_marca.setText("");
-        cb_carroceria.setSelectedIndex(0);
-        tf_color.setText("");
-        cb_motor.setSelectedIndex(0);
-        cb_hibridacion.setSelectedIndex(0);
-        sp_puertas.setValue(2);
-        sp_pasajeros.setValue(2);
-        sp_ensamblaje.setValue(0);
-        sp_precio.setValue(0);
+            
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
@@ -627,5 +633,13 @@ public class Main extends javax.swing.JFrame {
         jt_Vehiculos.setModel(model);
         jt_FiltroCategoria.setModel(model);
         jt_FiltroMarca.setModel(model);
+    }
+    
+    public boolean validarVIN(long vin){
+        for (Vehiculo v : vehiculos)
+            if(vin==v.getVIN())
+                return true;
+        
+        return false;
     }
 }
